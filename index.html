@@ -10,13 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root {
-            --brand-blue: #0b3d5e;
-            --brand-orange: #f4a51c;
-            --brand-orange-dark: #e0940f;
-            --gray-light: #f8f9fa;
-            --border-light: #eef1f4;
-        }
+        /* العناصر التالية (Keyframes, Media Queries, Pseudo-classes) لا يدعمها الـ HTML كـ Inline CSS */
         @keyframes shine {
             0% { right: -80%; }
             55% { right: 120%; }
@@ -100,24 +94,7 @@
         .plchold::placeholder{
             opacity: 0.5;
         }
-
-        /* --- أكواد أنيميشن الكتابة المعدلة للاستمرار والاختفاء --- */
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-left: 2px solid var(--brand-orange);
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--brand-blue);
-            /* إضافة infinite alternate ليتم تكرار الحركة وعكسها (كتابة ثم مسح) */
-            animation: typing 4s steps(35, end) infinite alternate, blink 0.75s step-end infinite;
-            max-width: 0;
-            vertical-align: middle;
-            padding-left: 4px;
-        }
         @keyframes typing {
-            /* التوقف قليلاً قبل البداية وقبل المسح */
             0%, 15% { max-width: 0; }
             85%, 100% { max-width: 280px; } 
         }
@@ -126,12 +103,24 @@
             50% { border-color: var(--brand-orange); }
         }
         @media (max-width: 380px) {
-            .typing-text { font-size: 0.8rem; }
+            .typing-text { font-size: 0.8rem !important; }
         }
-        /* ------------------------------------ */
+        
+        /* -- تنسيق شريط التمرير الرأسي للقوائم الداخلية ليتماشى مع التصميم -- */
+        .dropdown-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+        .dropdown-menu::-webkit-scrollbar-track {
+            background: var(--gray-light);
+            border-radius: 10px;
+        }
+        .dropdown-menu::-webkit-scrollbar-thumb {
+            background: var(--brand-orange);
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body style="font-family: 'Cairo', sans-serif; background: #fcfcfd; color: #1a1a1a; margin: 0; -webkit-font-smoothing: antialiased; box-sizing: border-box;">
+<body style="--brand-blue: #0b3d5e; --brand-orange: #f4a51c; --brand-orange-dark: #e0940f; --gray-light: #f8f9fa; --border-light: #eef1f4; font-family: 'Cairo', sans-serif; background: #fcfcfd; color: #1a1a1a; margin: 0; -webkit-font-smoothing: antialiased; box-sizing: border-box;">
 
     <header class="sticky-top shadow-sm">
         <div class="top-bar" style="background: #fff; position: relative; z-index: 1030; padding-top: 15px; padding-bottom: 15px; box-sizing: border-box;">
@@ -145,7 +134,7 @@
                     
                     <div class="flex-grow-1 d-none d-lg-block px-lg-3" style="box-sizing: border-box;">
                         <div class="search-wrapper mx-auto" style="position: relative; width: 100%; max-width: 720px; box-sizing: border-box;">
-                            <input class="plchold" type="text" class="form-control search-input" placeholder="يمكنك البحث عن دورات او مقالات تهمك مثل:(ستيب, الايلتس ...)" style="height: 48px; border-radius: 50rem; padding: 0 1.25rem 0 3rem; background: var(--gray-light); border: 1.5px solid #e6e8eb; font-weight: 500; font-size: 0.95rem; color: var(--brand-blue); box-shadow: 0 2px 8px rgba(11,61,94,0.04); transition: all 0.25s ease; width: 100%;">
+                            <input type="text" class="form-control search-input plchold" placeholder="يمكنك البحث عن دورات او مقالات تهمك مثل:(ستيب, الايلتس ...)" style="height: 48px; border-radius: 50rem; padding: 0 1.25rem 0 3rem; background: var(--gray-light); border: 1.5px solid #e6e8eb; font-weight: 500; font-size: 0.95rem; color: var(--brand-blue); box-shadow: 0 2px 8px rgba(11,61,94,0.04); transition: all 0.25s ease; width: 100%;">
                             <i class="bi bi-search" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a94a3; font-size: 1.1rem; pointer-events: none; transition: color 0.2s;"></i>
                         </div>
                     </div>
@@ -165,7 +154,7 @@
                 
                 <div class="d-lg-none mt-2" style="box-sizing: border-box;">
                     <div class="search-wrapper" style="position: relative; width: 100%; box-sizing: border-box;">
-                        <input type="text" class="form-control search-input mobile-search-adjust" placeholder="يمكنك البحث عن دورات او مقالات تهمك مثل:(ستيب, الايلتس ...)" style="height: 48px; border-radius: 50rem; padding: 0 1.25rem 0 3rem; background: var(--gray-light); border: 1.5px solid #e6e8eb; font-weight: 500; font-size: 0.95rem; color: var(--brand-blue); box-shadow: 0 2px 8px rgba(11,61,94,0.04); transition: all 0.25s ease; width: 100%;">
+                        <input type="text" class="form-control search-input mobile-search-adjust plchold" placeholder="يمكنك البحث عن دورات او مقالات تهمك مثل:(ستيب, الايلتس ...)" style="height: 48px; border-radius: 50rem; padding: 0 1.25rem 0 3rem; background: var(--gray-light); border: 1.5px solid #e6e8eb; font-weight: 500; font-size: 0.95rem; color: var(--brand-blue); box-shadow: 0 2px 8px rgba(11,61,94,0.04); transition: all 0.25s ease; width: 100%;">
                         <i class="bi bi-search" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #8a94a3; font-size: 1.1rem; pointer-events: none; transition: color 0.2s;"></i>
                     </div>
                 </div>
@@ -189,7 +178,7 @@
                                     <a class="nav-link dropdown-toggle mobile-nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--brand-blue); font-weight: 600; padding: 1rem 0.95rem; margin: 0 0.1rem; border-radius: 10px; position: relative; white-space: nowrap; font-size: 0.96rem; transition: all 0.2s ease; text-decoration: none; display: block;">
                                         أقسام الدورات
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box;">
+                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box; max-height: 200px; overflow-y: auto; overflow-x: hidden;">
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;"><i class="bi bi-translate ms-2"></i>اللغة الإنجليزية</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;"><i class="bi bi-graph-up ms-2"></i>القدرات العامة</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;"><i class="bi bi-mortarboard ms-2"></i>التحصيلي</a></li>
@@ -208,7 +197,7 @@
                                     <a class="nav-link dropdown-toggle mobile-nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--brand-blue); font-weight: 600; padding: 1rem 0.95rem; margin: 0 0.1rem; border-radius: 10px; position: relative; white-space: nowrap; font-size: 0.96rem; transition: all 0.2s ease; text-decoration: none; display: block;">
                                         الدورات المجانية
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box;">
+                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box; max-height: 200px; overflow-y: auto; overflow-x: hidden;">
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">تأسيس STEP</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">تأسيس IELTS</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">قواعد اللغة</a></li>
@@ -221,7 +210,7 @@
                                     <a class="nav-link dropdown-toggle mobile-nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: var(--brand-blue); font-weight: 600; padding: 1rem 0.95rem; margin: 0 0.1rem; border-radius: 10px; position: relative; white-space: nowrap; font-size: 0.96rem; transition: all 0.2s ease; text-decoration: none; display: block;">
                                         المزيد
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box;">
+                                    <ul class="dropdown-menu dropdown-menu-end" style="border: 0; border-radius: 14px; box-shadow: 0 12px 36px rgba(11,61,94,0.15); padding: 0.6rem; margin-top: 0.5rem !important; min-width: 220px; text-align: right; box-sizing: border-box; max-height: 200px; overflow-y: auto; overflow-x: hidden;">
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">الأسئلة الشائعة</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">قصص النجاح</a></li>
                                         <li><a class="dropdown-item" href="#" style="border-radius: 9px; padding: 0.6rem 0.95rem; font-weight: 500; color: var(--brand-blue); font-size: 0.92rem; transition: all 0.15s; text-decoration: none; display: block;">سياسة الخصوصية</a></li>
@@ -235,7 +224,7 @@
                         <button class="navbar-toggler" style="border: 1px solid var(--border-light); padding: 0.45rem 0.6rem; border-radius: 10px; background: #fff;" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon" style="width: 1.4em; height: 1.4em; background-image: url(&quot;data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230b3d5e' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e&quot;); display: block;"></span>
                         </button>
-                        <div class="typing-text ms-3">نتمنى لك رحلة تعلم سعيدة 😊</div>
+                        <div class="typing-text ms-3" style="display: inline-block; overflow: hidden; white-space: nowrap; border-left: 2px solid var(--brand-orange); font-size: 0.95rem; font-weight: 700; color: var(--brand-blue); animation: typing 4s steps(35, end) infinite alternate, blink 0.75s step-end infinite; max-width: 0; vertical-align: middle; padding-left: 4px;">نتمنى لك رحلة تعلم سعيدة 😊</div>
                     </div>
 
                 </div>
